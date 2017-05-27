@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 public class DrumKit extends MouseAdapter {
 
 	JLabel drumLabelWithImage;
+	JLabel drumLabelWithImage2;
 
 	public static void main(String[] args) throws Exception {
 		new DrumKit().getGoing();
@@ -30,7 +31,7 @@ public class DrumKit extends MouseAdapter {
 		// 2. Make the frame visible
 		frame.setVisible(true);
 		// 3. Set the size of the frame
-		frame.setSize(200,200);
+		frame.setSize(200, 200);
 		// 4. Set the title of the frame
 		frame.setTitle("Drum Kit");
 		// 5. Make a JPanel and initialize it.
@@ -41,34 +42,39 @@ public class DrumKit extends MouseAdapter {
 		// Eclipse project under "default package".
 		// 8. Put the name of your image in a String variable.
 		String drumPic = "pirateAccordion.jpg";
+		String drumPic2 = "ThreePirates.jpg";
 		// 9. Edit the next line to use your String variable
 		drumLabelWithImage = createLabelImage(drumPic);
-
+		drumLabelWithImage2 = createLabelImage(drumPic2);
 		// 10. Add the image to the panel
 		panel.add(drumLabelWithImage);
+		panel.add(drumLabelWithImage2);
 		// 11. Set the layout of the panel to "new GridLayout()"
 		panel.setLayout(new GridLayout());
 		// 12. call the pack() method on the frame
 		frame.pack();
 		// 13. add a mouse listener to drumLabelWithImage.
 		drumLabelWithImage.addMouseListener(this);
+		drumLabelWithImage2.addMouseListener(this);
 	}
 
 	public void mouseClicked(MouseEvent e) {
 		// 14. When the mouse is clicked, print "mouse clicked"
 		System.out.println("mouse clicked");
-		 
+
 		JLabel drumClicked = (JLabel) e.getSource();
 		// 15. Download a drum sound and drop it into your "default package".
-		
+
 		// You can find it on freesound.org. To download it, log in as
 		// leagueofamazing/code4life.
 		// 16. If they clicked on the drumImage...
-	
-		playSound("385876__alphatone__happy-pirate-accordion.wav");	
-		
+		if (drumLabelWithImage == drumClicked) {
+			playSound("385876__alphatone__happy-pirate-accordion.wav");
+		} else {
+			playSound("107818__rhavinga__pan-filmscary.mp3");
+		}
 		// 17. ...use the playSound method to play a drum sound.
-		
+
 		// 18. Add more images to make a drumkit. Remember to add a mouse
 		// listener to each one.
 	}
