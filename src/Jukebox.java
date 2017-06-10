@@ -24,9 +24,9 @@ public class Jukebox implements MouseListener {
 	public static void main(String[] args) {
 		// 3. Find an mp3 on your computer or on the Internet.
 		// 4. Create a Song
-		Song flipFantasia = new Song("US3 - Cantaloop (Flip Fantasia).mp3");
+		//Song flipFantasia = new Song("US3 - Cantaloop (Flip Fantasia).mp3");
 		// 5. Play the Song
-		flipFantasia.play();
+		//flipFantasia.play();
 		/*
 		 * 6. Create a user interface for your Jukebox so that the user can to
 		 * choose which song to play. You can use can use a different button for
@@ -42,7 +42,7 @@ public class Jukebox implements MouseListener {
 		JFrame frame = new JFrame();
 		frame.setVisible(true);
 		frame.setTitle("Juke Box");
-		frame.setSize(200, 200);
+		frame.setSize(500, 500);
 		JPanel panel = new JPanel();
 		frame.add(panel);
 		frame.pack();
