@@ -2,7 +2,6 @@
 // Copyright Wintriss Technical Schools 2013
 
 import java.applet.AudioClip;
-import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

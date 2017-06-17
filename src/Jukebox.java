@@ -1,27 +1,29 @@
 
 // Copyright The League of Amazing Programmers, 2015
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.advanced.AdvancedPlayer;
 
 /* 1. Download the JavaZoom jar from here: http://bit.ly/javazoom
  * 2. Right click your project and add it as an External JAR (Under Java Build Path > Libraries).*/
 
 public class Jukebox implements MouseListener {
-
-	public static void main(String[] args) {
+	JLabel jukeBoxWithLabel;
+	JLabel jukeBoxWithLabel2;
+	
+	public static void main(String[] args) throws Exception{
 		// 3. Find an mp3 on your computer or on the Internet.
 		// 4. Create a Song
 		//Song flipFantasia = new Song("US3 - Cantaloop (Flip Fantasia).mp3");
@@ -35,23 +37,37 @@ public class Jukebox implements MouseListener {
 		 * that was selected.
 		 */
 		Jukebox jukeBox= new Jukebox();
-		jukeBox.createUI();
+		jukeBox.createUI("pic1.jpg");
+		
 	}
 
-	private void createUI() {
+	private void createUI(String imageURL)  {
 		JFrame frame = new JFrame();
-		frame.setVisible(true);
-		frame.setTitle("Juke Box");
-		frame.setSize(500, 500);
 		JPanel panel = new JPanel();
+		
+		frame.setVisible(true);
+		frame.setSize(500, 500);
+		frame.setTitle("Juke Box");
+		
 		frame.add(panel);
+		try {
+			jukeBoxWithLabel=loadImage(imageURL);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		panel.add(jukeBoxWithLabel);
 		frame.pack();
 
 	}
 
 	/* Use this method to add album covers to your Panel. */
-	private JLabel loadImage(String fileName) {
+	private JLabel loadImage(String fileName) throws MalformedURLException   {
 		URL imageURL = getClass().getResource(fileName);
+		if (imageURL == null) {
+			System.err.println("Could not find image " + fileName);
+			return new JLabel();
+		}
 		Icon icon = new ImageIcon(imageURL);
 		return new JLabel(icon);
 	}
