@@ -42,12 +42,12 @@ public class SimonSays extends KeyAdapter {
 		// 16. make a points variable to track the score. tell the user their score at the end.
 		
 		// 17. if the keyCode matches the imageIndex and "Simon says..." increase their score
-		if (keyCode == imageIndex && simonSays == 0) {
+		if (keyCode == imageIndex && simonSays == simonSaysPressThisKey()) {
 			speak("correct");
 			score = score + 1;
 		}
 		// 18. if the keyCode doesn't match the imageIndex and "Simon didn't say..." increase their score
-		if (keyCode != imageIndex && simonSays != 0) {
+		if (keyCode != imageIndex && simonSays != simonSaysPressThisKey()) {
 			speak("correct");
 			score = score + 1;
 		}
@@ -59,7 +59,7 @@ public class SimonSays extends KeyAdapter {
 		if (tries > 5) {
 			// 15. exit the program
 			speak("You have a score of "+score+" out of 6 tries");
-			System.exit(0);
+			System.exit(simonSaysPressThisKey());
 		}
 		// 11. dispose of the frame
 		frame.dispose();
@@ -82,13 +82,17 @@ public class SimonSays extends KeyAdapter {
 		frame2.addKeyListener(this);
 		// 10. Use the speak method to either say "Simon says press this key" or "Press this key"
 		// Hint: use the simonSays int and a random number
-		if (simonSays == 0) {
+		if (simonSays == simonSaysPressThisKey()) {
 			simonSays = new Random().nextInt(2);
 			speak("Simon says press this key");
 		} else {
 			speak("Press this key");
 		}
 
+	}
+
+	private int simonSaysPressThisKey() {
+		return 0;
 	}
 
 	private Component getNextRandomImage() {
