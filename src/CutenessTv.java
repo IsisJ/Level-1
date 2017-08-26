@@ -8,12 +8,13 @@ import javax.swing.JPanel;
 
 public class CutenessTv implements ActionListener {
 
-	public static void main(String[] args) {
+	public JButton leftButton = new JButton();
+	public JButton rightButton = new JButton();
+	public JButton middleButton = new JButton();
+
+	public void createUI() {
 		JFrame frame = new JFrame();
 		JPanel panel = new JPanel();
-		JButton leftButton = new JButton();
-		JButton middleButton = new JButton();
-		JButton rightButton = new JButton();
 
 		frame.add(panel);
 		frame.setVisible(true);
@@ -21,8 +22,35 @@ public class CutenessTv implements ActionListener {
 		panel.add(rightButton);
 		panel.add(middleButton);
 		panel.add(leftButton);
-		frame.pack();
+		
+		leftButton.setText("Ducks");
+		rightButton.setText("Frogs");
+		middleButton.setText("Fluffy Unicorns");
 
+		leftButton.addActionListener(this);
+		rightButton.addActionListener(this);
+		middleButton.addActionListener(this);
+		
+		frame.pack();
+	}
+
+	public static void main(String[] args) {
+		CutenessTv tv = new CutenessTv();
+		tv.createUI();
+		
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		JButton buttonPressed = (JButton) e.getSource();
+		if (leftButton == buttonPressed) {
+			showDucks();
+		}
+		if (rightButton == buttonPressed) {
+			showFrog();
+		}
+		if(middleButton==buttonPressed){
+			showFluffyUnicorns();
+		}
 	}
 
 	void showDucks() {
@@ -39,15 +67,11 @@ public class CutenessTv implements ActionListener {
 
 	void playVideo(String videoID) {
 		try {
-			URI uri = new URI("https://www.youtube.com/v/" + videoID + "?autoplay=1");
+			URI uri = new URI("https://www.youtube.com/watch?v=" + videoID + "?autoplay=1");
 			java.awt.Desktop.getDesktop().browse(uri);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		JButton buttonPressed=(JButton)e.getSource();
-	}
 }
