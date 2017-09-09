@@ -1,7 +1,11 @@
 int ballX= 200;
 int ballY=200;
-int ballSpeedX=2;
-int ballSpeedY=3;
+int ballSpeedX=3;
+int ballSpeedY=4;
+int paddleX=250;
+int paddleY=450;
+int paddleWidth=20;
+//int paddleHieght=50;
 
 void setup(){
   
@@ -21,21 +25,30 @@ void draw(){
   println(ballX);
   println(ballY);
   if(ballX>=500){
-      ballSpeedX=-2;
+      ballSpeedX=-3;
      
   }
   if(ballY>=500){
-     ballSpeedY=-3;
+     ballSpeedY=-4;
    
   }
   if(ballY<=0){
-   ballSpeedY=2; 
+   ballSpeedY=3; 
   }
   if(ballX<=0){
-   ballSpeedX=3; 
+   ballSpeedX=4; 
   } 
   
-  rect(250, 450, 50, 20);
+  rect(mouseX, 450, 50, 20);
+  
+  if(ballX >= mouseX && ballX <= (mouseX+paddleWidth) && ballY >= paddleY){
+    ballSpeedX=-3;
+    ballSpeedY=-4; 
+  }
+
+  
+  
+  
   
 }
 /*
