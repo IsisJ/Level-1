@@ -1,3 +1,4 @@
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,26 +9,27 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class BinaryConverter implements ActionListener {
-	
-	
-	// add button stuff
-	// connect main method code with code down below and make it work!
+	int num;
+	JLabel label = new JLabel();
+	JTextField textField = new JTextField(10);
+	JButton button = new JButton();
+
+
 	
 	public void createUI(){
-		
 		JFrame frame = new JFrame();
 		frame.setVisible(true);
-		JPanel panel = new JPanel();
-		JTextField textField = new JTextField(10);
-		JButton button = new JButton();
-		button.setText("Converrt");
-		JLabel label = new JLabel();
+		JPanel panel = new JPanel(new GridLayout(3,1));
+		button.setText("Convert");
+		
 	
 		frame.add(panel);
+		frame.setSize(300, 300);
 		panel.add(textField);
 		panel.add(button);
 		panel.add(label);
-		frame.pack();
+		button.addActionListener(this);
+		//frame.pack();
 	
 	}
 	
@@ -38,7 +40,31 @@ public class BinaryConverter implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton buttonClicked = (JButton) e.getSource();
-		
+		if(button == buttonClicked){
+			//System.out.println(textField.getText());
+			int num = Integer.parseInt(textField.getText());
+			System.out.println(num);
+			
+			int eightsDigit = num/8;
+			num = num-8*eightsDigit;
+			int foursDigit = num/4;
+			num = num-4*foursDigit;
+			int twosDigit = num/2;
+			num = num-2*twosDigit;
+			int onesDigit = num/1;
+			num = num-1*onesDigit;
+			
+			String s8Digit = Integer.toString(eightsDigit);
+			String s4Digit = Integer.toString(foursDigit);
+			String s2Digit = Integer.toString(twosDigit);
+			String s1Digit = Integer.toString(onesDigit);
+
+			String addAns = s8Digit+s4Digit+s2Digit+s1Digit;
+			System.out.println(addAns);
+			
+			label.setText( addAns);
+			
+		}
 	}
 	
 	
@@ -51,23 +77,7 @@ public class BinaryConverter implements ActionListener {
 		BinaryConverter converter = new BinaryConverter();
 		converter.createUI();
 		
-		int num = 8;
-		int eightsDigit = num/8;
-		num = num-8*eightsDigit;
-		int foursDigit = num/4;
-		num = num-4*foursDigit;
-		int twosDigit = num/2;
-		num = num-2*twosDigit;
-		int onesDigit = num/1;
-		num = num-1*onesDigit;
-		
-		String s8Digit = Integer.toString(eightsDigit);
-		String s4Digit = Integer.toString(foursDigit);
-		String s2Digit = Integer.toString(twosDigit);
-		String s1Digit = Integer.toString(onesDigit);
-
-		String addAns = s8Digit+s4Digit+s2Digit+s1Digit;
-		System.out.println(addAns);
+				
 		
 		
 		
