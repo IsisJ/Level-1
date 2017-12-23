@@ -17,6 +17,7 @@
 /FractionsTest.class
 /ImageQuiz.class
 /Jukebox.class
+/KeyKnowledge.class
 /KeyListenerTest.class
 /LandOfTurtles.class
 /MouseListenerTest.class
@@ -33,6 +34,8 @@
 /WackAMole.class
 /WarmUp.class
 /WarmUp2.class
+/Wolf.class
+/WolfPractice.class
 /cityScape.class
 /cool-drum-wallpaper.jpg
 /downArrow.j.jpg
@@ -47,6 +50,4 @@
 /rightArrow.png
 /upArrow.jpg
 /upArrow.png
-/Wolf.class
-/WolfPractice.class
-/KeyKnowledge.class
+/Riddles.class
